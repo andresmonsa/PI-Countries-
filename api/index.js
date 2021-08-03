@@ -18,11 +18,16 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const { conn, Country } = require('./src/db');
+const getCountries = require('./src/loader')
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
-  });
-});
+conn.sync({ force: true })
+  .then(() => {
+    console.log('base de datos conectada')
+    getCountries(Country)
+    server.listen(3001, () => {
+      console.log('Server listening at 3001'); // eslint-disable-line no-console
+    });
+  })
+  .catch(err => console.log('ERROR: ', err ))
