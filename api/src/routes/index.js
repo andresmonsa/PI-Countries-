@@ -11,6 +11,6 @@ const router = express.Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.use('/countries', countryRoutes) 
-// router.use('/activities', activityRoutes)
+router.use('/activities', activityRoutes)
 
 module.exports = router;
