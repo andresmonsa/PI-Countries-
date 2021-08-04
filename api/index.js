@@ -22,12 +22,33 @@ const { conn, Country } = require('./src/db');
 const getCountries = require('./src/Loader/loader')
 
 // Syncing all the models at once.
-conn.sync({ force: true })
+
+// const sincr = async () => {
+//   try {
+//     await conn.sync({ force: false })
+//     console.log('base de datos conectada')
+//   }
+//   catch {
+//     err => console.log('ERROR EN DB'.red)
+//   }
+
+//   await getCountries(Country)
+
+//   server.listen(3001, () => {
+//     console.log('Server listening at 3001'); // eslint-disable-line no-console
+//   });
+
+// }
+// sincr()
+
+conn.sync({ force: false })
   .then(() => {
     console.log('base de datos conectada')
     getCountries(Country)
-    server.listen(3001, () => {
-      console.log('Server listening at 3001'); // eslint-disable-line no-console
-    });
+      .then(() => {
+        server.listen(3001, () => {
+          console.log('Server listening at 3001'); // eslint-disable-line no-console
+        });
+      })
   })
-  .catch(err => console.log('ERROR: ', err ))
+  .catch(err => console.log('ERROR: ', err))
