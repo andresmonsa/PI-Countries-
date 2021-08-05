@@ -1,9 +1,10 @@
 const axios = require('axios');
+const {API_URL} =  process.env;
 
 const getCountries = async (Country) => {
-    const apiUrl = 'https://restcountries.eu/rest/v2/all';
+    
     try {
-        const apiResponse = await axios.get(apiUrl)
+        const apiResponse = await axios.get(API_URL)
         let apiCountries = apiResponse.data
 
         for (let i = 0; i < apiCountries.length; i++) {
@@ -19,18 +20,17 @@ const getCountries = async (Country) => {
                 population: country.population,
                 area: country.area,
             }
-            
+            //try {
                 Country.findOrCreate({
                     where: {
                         name: addCountry.name
                     },
                     defaults: addCountry
                 })
-
-         
-
-
-            // console.log('▄'.green, country.name)   opcion : agregar una bandera para activar el log de la carga
+            // }
+            // catch(err)
+                    // console.log('▄'.green, country.name)   //opcion : agregar una bandera para activar el log de la carga
+                
         }
          console.log(`${apiCountries.length} paises cargados correctamente`.green)
     }

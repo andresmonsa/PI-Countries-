@@ -5,12 +5,12 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
     let name = req.query.name;
-    
+
     if (name) {
         Country.findAll({
             where: {
                 name: {
-                    [Op.iLike]: name
+                    [Op.iLike]: `%${name}%`
                 }
             },
             // order: [
@@ -61,7 +61,7 @@ router.get('/:id', (req, res) => {
         // include: Activity 
     })
         .then((country) => {
-            
+
             if (country.length === 0) {
                 return res.send('No se encontró el país')
             } else {
