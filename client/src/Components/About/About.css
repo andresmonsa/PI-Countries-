@@ -1,0 +1,23 @@
+.technologies-div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+
+.technologies{
+    width: 150px;
+    height: 70px;
+}
+
+.links{
+    width: 80px;
+    height: 50px;
+}
+
+.links:hover{
+    opacity: 0.6;
+}
+

@@ -1,0 +1,16 @@
+.flagImg{
+    width: 39px;
+    margin: 7px;
+    opacity: 30%;
+}
+
+.flagImg:hover {
+    width: 46px;
+    opacity: 100%;
+}
+.countries-ctn{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
