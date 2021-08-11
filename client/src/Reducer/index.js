@@ -19,6 +19,7 @@ function rootReducer(state = initialState, action) {  //destructuring de action 
             return {
                 ...state,
                 countries: action.payload
+                //country: action.payload
             }
         case 'GET_COUNTRY_ID':
             return {

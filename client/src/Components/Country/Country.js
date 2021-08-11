@@ -1,7 +1,7 @@
 import './Country.css'
 
 export default function Country(props) {
-
+// console.log(props.name)
     return (
         <div className='container'>
             <h2>{props.name}</h2>

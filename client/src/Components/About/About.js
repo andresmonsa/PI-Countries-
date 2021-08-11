@@ -15,7 +15,7 @@ import Github from './Img/github.svg'
 const About = () => {
     return (
         <div className="About">
-              {/* <NavBar/> */}
+              <NavBar/>
                     <div className="About-Background">
             <div className="About-Title">
                 <h1 >Thanks for visiting this page! </h1>

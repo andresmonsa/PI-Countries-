@@ -35,9 +35,9 @@ router.get('/', (req, res) => {
                 ['name', 'ASC']
             ],
             attributes: [
-                'name', 'code',
+                'name', 'code','flagImg'
             ],
-            // include: Activity 
+             include: Activity 
         })
             .then((country) => {
                 return res.json(country)
@@ -56,9 +56,9 @@ router.get('/:id', (req, res) => {
         },
         include: Activity,
         attributes: [
-            'name', 'code',
+            'name', 'code', 'flagImg','capital', 'subregion', 'area', 'population',
         ],
-        // include: Activity 
+         include: Activity 
     })
         .then((country) => {
 

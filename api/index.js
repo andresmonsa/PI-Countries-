@@ -41,7 +41,7 @@ const getCountries = require('./src/Loader/loader')
 // }
 // sincr()
 
-conn.sync({ force: true })
+conn.sync({ force: false })
   .then(() => {
     console.log('base de datos conectada')
     getCountries(Country)

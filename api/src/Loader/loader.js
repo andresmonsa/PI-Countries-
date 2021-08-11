@@ -10,6 +10,7 @@ const getCountries = async (Country) => {
         for (let i = 0; i < apiCountries.length; i++) {
             let country = apiCountries[i]
 
+            
             const addCountry = {
                 name: country.name,
                 code: country.alpha3Code,

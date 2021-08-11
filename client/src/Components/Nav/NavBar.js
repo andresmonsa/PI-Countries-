@@ -9,7 +9,7 @@ export default function NavBar(props) {
         <nav>
             <ul className="searchBar-ul">
                 {/* <ol> <img src={portal} alt="Portal" className='portal' /></ol> */}
-                {/* <ol><NavLink to={`/${props.dir}`}> {props.dir} </NavLink></ol> */}
+              
                 <div>
             <NavLink
                 activeStyle={{ color: '#b3b3b3', fontWeight: 'bold' }}

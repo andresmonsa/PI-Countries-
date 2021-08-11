@@ -12,38 +12,38 @@ router.get('/', (req, res) => {
     })
         .then((activity) => {
             // console.log(activity[0].countries)
-            return res.json(activity)
-        }).catch(err=> console.log('error al cargar actividad'.red))
+            return res.json(activity[0].countries[0])
+        }).catch(err => console.log('error al cargar actividad'.red))
 })
 
 router.post('/', async (req, res) => {
-    const activityBody = req.body;
-    // console.log(activityBody, 'activityBody'.red)
-
-    const newActivity = await Activity.create(activityBody)
-
-    Country.findAll({
+    let { name, difficulty, duration, season, country } = req.body
+    const createActivity = await Activity.findOrCreate({
         where: {
-            code: {
-                [Op.iLike]: activityBody.country
-            }
+            name,
+            difficulty,
+            duration,
+            season,
         }
-    }).then(country => {
-
-
-        // console.log('country'.green ,country)
-        //  country.addActivity(newActivity)
-        newActivity.addCountry(country)
-
-
-        console.log(`Se agregó correctamente ${activityBody.name} a la ${country[0].dataValues.name}`.bgGreen.red)
-        // res.send(country.name)
-        res.send(`Se agregó correctamente ${activityBody.name} a la ${country[0].dataValues.name}`)
-    }).catch(err => {
-        res.send('No se pudo agregar la actividad')
-        console.log('No se pudo agregar la actividad'.red, err)
+    });
+    // console.log(Array.isArray(country))
+    // country = country.split(',')
+    country.map(el => {
+        Country.findAll({
+            where: {
+                code: {
+                    [Op.iLike]: el
+                }
+            }
+        }).then(country => {
+            createActivity[0].addCountry(country)
+                .then(e => console.log(`Se agregó ${createActivity[0].name}  a ${country[0].name} correctamente`))
+                .catch(e => console.log(`No se pudo agregar ${createActivity[0].name}  `))
+        }).catch(err => {
+            console.log('No se encontró el país'.red, err)
+        })
     })
 
-
+    res.send(createActivity)
 })
 module.exports = router
