@@ -2,4 +2,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+.flag{
+    width: 100px;
+    margin: 20%;
+    opacity: 50%;
+}
+
+.flag:hover {
+    width: 110px;
+    opacity: 100%;
 }

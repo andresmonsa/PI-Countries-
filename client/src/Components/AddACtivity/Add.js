@@ -1,8 +1,6 @@
 
 import NavBar from "../Nav/NavBar"
-import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react';
-// import AsyncSelect from 'react-select/async'
+import { useSelector } from 'react-redux'
 import Select from 'react-select'
 import './Add.css'
 export default function Add() {

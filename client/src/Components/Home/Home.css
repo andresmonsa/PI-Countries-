@@ -1,23 +1,28 @@
 .countries-ctn{
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     align-items: center;
     justify-content: center;
-}
-
-.flagImg{
-    width: 179px;
-    margin: 11px;
-    opacity: 30%;
-}
-
-.flagImg:hover {
-    width: 186px;
-    opacity: 100%;
+    margin: 1%;
 }
 
 .input-text {
     margin-left:20px;
     margin-right:20px;
     margin-bottom: 25px;
+}
+
+.country {
+    margin: 50%;
+}
+.selectHome {
+    display: flex;
+    justify-content: center;
+    /* margin-left: 25% */
+    
+}
+.selectOrder, .selectRegion, .selectPopulation, .selectCountry{
+    width: 15%;
+    margin-left: 5px;
+    /* margin-right: auto; */
 }

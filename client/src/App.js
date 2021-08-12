@@ -31,8 +31,8 @@ function App() {
  
   return (
     <div className="App">
-      {err ? <ServerDown />
-        :
+      {/* {err ? <ServerDown />
+        : */}
         < div >
           < Route exact path='/' component={Landing} />
           <Route exact path='/about' component={About} />
@@ -40,7 +40,7 @@ function App() {
           <Route exact path='/Add' component={Add} />
           <Route exact path="/country/:id"><CountryDetails /></Route>
         </div>
-      }
+      {/* } */}
     </div>
   )
 }

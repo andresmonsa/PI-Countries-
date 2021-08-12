@@ -1,12 +1,12 @@
 import './Country.css'
 
 export default function Country(props) {
-// console.log(props.name)
+// console.log(props)
     return (
         <div className='container'>
-            <h2>{props.name}</h2>
+            <h3>{props.name}</h3>
             <img className="flag" src={props.flag} alt="flag" />
-            <h3>Region :{props.region}</h3>
+            <h4>Region: {props.region}</h4>
         </div>
     )
 }

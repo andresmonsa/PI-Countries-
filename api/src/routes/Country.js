@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
                 ['name', 'ASC']
             ],
             attributes: [
-                'name', 'code','flagImg'
+                'name', 'code','flagImg', 'region'
             ],
              include: Activity 
         })
@@ -56,7 +56,7 @@ router.get('/:id', (req, res) => {
         },
         include: Activity,
         attributes: [
-            'name', 'code', 'flagImg','capital', 'subregion', 'area', 'population',
+            'name', 'code', 'flagImg','capital', 'subregion', 'area', 'population','region'
         ],
          include: Activity 
     })

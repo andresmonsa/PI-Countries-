@@ -8,11 +8,17 @@ const colors = require('colors')
 router.get('/', (req, res) => {
 
     return Activity.findAll({
-        include: Country
+        attributes: [
+            'id', 'name', 'duration', 'season'
+        ],
+        include: {
+            model: Country,
+            attributes: ['code', 'name', 'flagImg'] 
+        }
     })
         .then((activity) => {
             // console.log(activity[0].countries)
-            return res.json(activity[0].countries[0])
+            return res.json(activity)
         }).catch(err => console.log('error al cargar actividad'.red))
 })
 
