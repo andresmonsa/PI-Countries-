@@ -1,0 +1,8 @@
+.activities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.non{
+ margin: auto;
+}

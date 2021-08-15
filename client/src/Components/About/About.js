@@ -1,7 +1,7 @@
 import React from 'react'
 import './About.css'
 import NavBar from '../Nav/NavBar';
-
+import back from './Img/About.jpg'
 import Express from './Img/express.svg'
 import Postgres from './Img/postgres.svg'
 import ReactSvg from './Img/react.svg'
@@ -15,6 +15,7 @@ import Github from './Img/github.svg'
 const About = () => {
     return (
         <div className="About">
+            {/* <img src={back} className='background'/> */}
               <NavBar/>
                     <div className="About-Background">
             <div className="About-Title">
@@ -33,9 +34,9 @@ const About = () => {
 
                         <div className="About-Me">
                             <h1 className="About-Text">My social networks and where to contact me.</h1>
-                            <a href="https://www.google.com/" target="_blank" rel="noreferrer"> <img className="links" alt="LinkedinImg" src={Linkedin}></img> </a>
+                            <a href="https://www.linkedin.com/in/andr%C3%A9s-monsalbe-65130ab7/" target="_blank" rel="noreferrer"> <img className="links" alt="LinkedinImg" src={Linkedin}></img> </a>
                             <a href="https://www.google.com/" target="_blank" rel="noreferrer"> <img className="links" alt="GmailImg" src={Gmail}></img> </a>
-                            <a href="https://www.google.com/" target="_blank" rel="noreferrer"> <img className="links" alt="Github" src={Github}></img> </a>
+                            <a href="https://github.com/andresmonsa/" target="_blank" rel="noreferrer"> <img className="links" alt="Github" src={Github}></img> </a>
                         </div>
             </div>
 

@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
                 ['name', 'ASC']
             ],
             attributes: [
-                'name', 'code','flagImg', 'region'
+                'name', 'code','flagImg', 'region', 'population'
             ],
              include: Activity 
         })

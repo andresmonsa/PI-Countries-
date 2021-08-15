@@ -1,11 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import { getCountryID } from '../../Actions/'
 import NavBar from '../Nav/NavBar'
-import './CountryDetails.css'
-
+import cardDet from './CountryDetails.module.css'
 export default function CountryDetails(props) {
 
     const dispatch = useDispatch()
@@ -33,27 +32,45 @@ export default function CountryDetails(props) {
             <div >
                 <NavBar />
                 {country[0].name ? (
-                    <div className='container' >
-                        <p> Country: {country[0].name}</p>
-                        <img className='flagImgDet' src={country[0].flagImg} alt={country[0].name} ></img>
-                        <p> Code: {country[0].code}</p>
-                        <p> Sub-region: {country[0].subregion}</p>
-                        <p> Population: {country[0].population} </p>
-                        <p> Area: {country[0].area} km² </p>
-                        <div>
-                            {country[0].activities.map(el => {
-                                return (
-                                    <ul key={el.name}>
-                                        <li>Activity : {el.name} </li>
-                                        <li>Difficulty : {el.difficulty} </li>
-                                    </ul>
-                                )
-                            })}
+                    <div >
+                        <div   >
+                            <h1> Country: {country[0].name}</h1>
+                            <img className={cardDet.flagImg} src={country[0].flagImg} alt={country[0].name} ></img>
+                            <p> <span className={cardDet.span}>Code:</span> {country[0].code}</p>
+                            <p> <span className={cardDet.span}>Sub-region:</span>  {country[0].subregion}</p>
+                            <p> <span className={cardDet.span}>Population:</span> {country[0].population} habs. </p>
+                            <p> <span className={cardDet.span}>Area:</span>  {country[0].area} km² </p>
+
 
                         </div>
-                        
+                        <div>
+                            {country[0].activities.length > 0 ? <h1>Activities</h1> : null}
+                            <div className={cardDet.activitiesCard}>
+                                {country[0].activities.map((el, i) => {
+                                    console.log(el)
+                                    return (
+
+                                        <ul key={el.name} className={cardDet.activities}> Activity:  {i + 1}
+                                            <li><span className={cardDet.span}>Name:</span> {el.name} </li>
+                                            <li><span className={cardDet.span}>Season:</span> {el.season}</li>
+                                            <li><span className={cardDet.span}>Duration:</span> {el.duration}</li>
+                                            <li><span className={cardDet.span}>Difficulty:</span> {el.difficulty}</li>
+                                        </ul>
+
+                                    )
+
+                                })}
+                            </div>
+                        </div>
+
                     </div>
-                ) : (<p>No se encontró el país</p>)}
+                ) : (
+                    <div>
+                        <NavLink to='/home'> Home  </NavLink>
+                        <p>No se encontró el país</p>
+
+                    </div>
+                )}
             </div>
         )
     }

@@ -7,7 +7,7 @@ export default function LandingPage() {
             <div className='Landing'>
                 <h1 className='Header'> Welcome! </h1>
                 <Link to='/home'>
-                    <button> Enter Site </button>
+                    <button className='btnEnter'> Enter Site </button>
                 </Link>
             </div>
         )
