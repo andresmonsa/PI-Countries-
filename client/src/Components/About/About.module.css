@@ -10,7 +10,7 @@
 }
 
 
-.technologies-div{
+.technologiesDiv{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -23,11 +23,15 @@
 .technologies{
     width: 150px;
     height: 70px;
+    background-color: hsla(244, 100%, 17%, 0.25);
 }
 
 .links{
     width: 80px;
     height: 50px;
+    height: 70px;
+    background-color: hsla(244, 100%, 17%, 0.19);
+    padding: 20px;
 
 }
 
@@ -38,4 +42,14 @@
 
 p{
     font-weight: 750;
+}
+
+h2 {
+    display: flex;
+    flex-direction: column;
+    /* margin-left: 14%; */
+    /* width: 70%; */
+    background-color: hsla(0, 17%, 53%, 0.03);
+    border: 2px solid hsla(244, 72%, 25%, 0.05);   
+     border-radius: 5px;
 }

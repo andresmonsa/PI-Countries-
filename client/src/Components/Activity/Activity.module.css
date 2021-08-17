@@ -2,13 +2,16 @@
     display: flex;
 } */
 .flagImg{
-    width: 34px;
-    height: 20px;
+    width: 30px;
+    height: 25px;
+    padding-left: 5px;
 }
 
 .span{
     font-size: medium ;
     font-weight: bold;
+    color:hsla(244, 72%, 25%, 1) ;
+    /* background-color: hsla(244, 72%, 25%, 0.15); */
 }
 
 .actDet {
@@ -17,15 +20,13 @@
     margin: 10px;
     border-radius: 2px;
     box-shadow:inset 0px 1px 0px 0px #383838;
-	/* background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%); */
-	/* background-color:#ededed; */
+    background-color: hsla(244, 72%, 25%, 0.15);
+    border: 2px solid hsla(244, 72%, 25%, 0.25);   
+    border-radius: 5px;
 	border-radius:6px;
-	border:1px solid #000000;
-	cursor:pointer;
-	/* color:#777777; */
-	font-size:15px;
-	font-weight:bold;
-	padding:10px 32px;
+	font-size:16px;
+	
+	
 	
 	text-shadow:0px 1px 0px #969696;
 }

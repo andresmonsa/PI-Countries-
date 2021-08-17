@@ -1,11 +1,12 @@
 import './ServerDown.css'
-import cat from './500.jpg'
+
+import Err from './Err.gif'
 export default function ServerDown() {
 
     return (
         <div className='serverDown'>
-            {/* <div className='error' /> */}
-            <img src={cat} alt='Server Down' className='cat'   ></img>
+                <h1 className='msg'>Error in server, please try later... </h1>
+            <img src={Err} alt='Server Down' className='err'   ></img>
         </div>
     )
 }

@@ -13,12 +13,12 @@ import './Home.css'
 
 export default function Home() {
 
-
-
+    const sortFunc = require('./Filter')
     let countries = useSelector(state => state.countries)
     const [filteredList, setFilteredList] = useState(countries)
     const [paginate, setPaginate] = useState(0)
     const [actualPage, setActualPage] = useState()
+    // const [errors, setErrors] = useState({})
     const [options, setOptions] = useState({
         name: "",
         activity: "",
@@ -26,12 +26,11 @@ export default function Home() {
         sort: "ASC",
         population: '',
     });
-
-    const sortFunc = require('./Filter')
-    let filteredByName = countries.filter(country => country.name.toLowerCase().includes(options.name.toLowerCase()))
-    let filteredByRegion = countries.filter(country => country.region.toLowerCase().includes(options.region.toLowerCase()))
-
+    
+    
     useEffect(() => {
+        let filteredByName = countries.filter(country => country.name.toLowerCase().includes(options.name.toLowerCase()))
+        let filteredByRegion = countries.filter(country => country.region.toLowerCase().includes(options.region.toLowerCase()))
         let filtered
         if (!options.name) {
             if (options.region === 'All') {
@@ -57,27 +56,31 @@ export default function Home() {
         setFilteredList(filtered)
         setActualPage(filtered.slice(paginate, paginate + 9))  // los paises ya filtrados y paginados
 
-    }, [options.region, options.name, options.sort, options.population, paginate, countries, filteredList.length])
+    }, [options.region, options.name, options.sort, options.population, paginate, countries, filteredList.length,sortFunc])
 
     const onSearchChange = (e) => {
         setPaginate(0)
 
-        if (e.target.value === '') {
-            setOptions(prev => ({
-                ...prev,
-                region: 'All',
-                sort: 'ASC',
-                population: ''
-            }))
-        }
+        // if (e.target.value === '') {
+        //     setOptions(prev => ({
+        //         ...prev,
+        //         region: 'All',
+        //         sort: 'ASC',
+        //         population: ''
+        //     }))
+        // }
         setOptions(prev => ({
             ...prev,
             // sort: 'ASC',
             [e.target.name]: e.target.value
         }))
     }
+
     const onSelectChange = (e) => {
         setPaginate(0)
+        if(e.target.name === 'region'){
+            document.getElementById("population").value = e.target.value
+        }
         if (e.target.name === 'sort') {
             document.getElementById("population").value = "";
             options.population = ''
@@ -124,7 +127,6 @@ export default function Home() {
         <div >
             <NavBar />
 
-
             <div>
 
                 <input
@@ -143,7 +145,7 @@ export default function Home() {
                         {/*  SELECT TRADICIONAL    */}
 
                         <label htmlFor="region">Choose a region:</label>
-                        <select name="region" id="region" onChange={onSelectChange} >
+                        <select name="region" value={options.region} id="region" onChange={onSelectChange} >
                             <option value="All">All</option>
                             <option value="Asia">Asia</option>
                             <option value="Europe">Europe</option>
@@ -183,7 +185,7 @@ export default function Home() {
                         /> */}
 
                         <label htmlFor="population">Order by Population </label>
-                        <select name="population" id="population" onChange={onSelectChange} >
+                        <select name="population"  value={options.population} id="population" onChange={onSelectChange} >
                             <option value=""></option>
                             <option value="ASC">ASC</option>
                             <option value="DES">DES</option>

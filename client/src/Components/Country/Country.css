@@ -7,6 +7,7 @@
 }
 
 .flag{
+    max-height: 60px;
     width: 100px;
     margin: 20%;
     opacity: 50%;
@@ -15,4 +16,13 @@
 .flag:hover {
     width: 110px;
     opacity: 100%;
+}
+
+.name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 125px;
+    
 }

@@ -1,39 +1,39 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './NavBar.css'
-// import Logo from '../../logoHenry.png'
+import navBar from './NavBar.module.css'
+ import icon from './icon.jpg'
 
 
 export default function NavBar(props) {
     return (
-        <nav>
-            <ul className="searchBar-ul">
-                {/* <ol> <img src={portal} alt="Portal" className='portal' /></ol> */}
+        <nav className={navBar.Link}>
+            <ul className={navBar.searchBarUl}>
+                <ol> <img src={icon} alt="Icon" className={navBar.icon} /></ol>
 
                 <div>
                     <NavLink
                         activeStyle={{ fontWeight: 'bold' }}
-                        className="Link" to='/home' >
-                        <span>Home</span>
+                        className={navBar.Link} to='/home' >
+                        <span className={navBar.Item}>Home</span>
                     </NavLink>
                 </div>
                 <div>
                     <NavLink
-                        activeStyle={{  fontWeight: 'bold' }}
-                        className="Link" to='/add' >Add Activity
+                        activeStyle={{ fontWeight: 'bold' }}
+                        className={navBar.Link} to='/add' ><span className={navBar.Item}>Add Activity </span>
                     </NavLink>
                 </div>
 
                 <div>
                     <NavLink
                         activeStyle={{ fontWeight: 'bold' }}
-                        className="Link" to='/Activities' >Activities
+                        className={navBar.Link} to='/Activities' ><span className={navBar.Item}>Activities</span>
                     </NavLink>
                 </div>
                 <div>
                     <NavLink
-                        activeStyle={{  fontWeight: 'bold' }}
-                        className="Link" to='/about' >About
+                        activeStyle={{ fontWeight: 'bold' }}
+                        className={navBar.Link} to='/about' ><span className={navBar.Item}>About</span>
                     </NavLink>
                 </div>
             </ul>

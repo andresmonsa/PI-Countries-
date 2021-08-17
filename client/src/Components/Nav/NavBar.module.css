@@ -1,0 +1,38 @@
+.searchBarUl {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid rgb(37, 20, 99);
+    border-radius: 8px;
+    padding: 5px;
+    margin: 1px;
+}
+
+.Link {
+    padding: 7px;
+    background-color: hsla(244, 62%, 29%, 0.75);
+    color: white;
+    margin-bottom: 10px;
+    font-size: 20px;
+    border: 1px solid hsla(244, 72%, 25%, 0.75);
+    border-radius: 5px;
+}
+
+.Item {
+    padding: 1px 7px 1px 7px;
+}
+.Item:hover {
+    background-color: hsla(240, 5%, 52%, 0.75);
+    color: rgb(255, 255, 255);
+    font-size: large;
+}
+
+.Item:active {
+    background-color: hsla(240, 1%, 65%, 0.75);
+    font-size: large;
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+}
