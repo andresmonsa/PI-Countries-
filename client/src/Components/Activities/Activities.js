@@ -22,30 +22,38 @@ export default function Activities() {
             alert('No se puede acceder a la base de datos')
         }
     }, [])
-    
-    const [options, setOptions] = useState({
+    let opt = {
         activity: "",
         country: "All",
         sort: "ASC",
         season: 'All',
         duration: 'All',
         difficulty: 'All'
-    });
+    }
+    const [options, setOptions] = useState(opt);
     const [activities, setActivities] = useState([])
     const [actualPage, setActualPage] = useState([])
     // const [filtered, setFiltered] = useState([])
 
 
     useEffect(() => {
-        // let filteredByName = [];
+        let filteredByName = [];
         let filteredByCountry = []
         let filteredBySeason;
         let filteredByDifficulty;
+        let filtered = activities
         // console.log(activities)
-        if (options.country === 'All') {
-            filteredByCountry = activities
-            setActualPage(filteredByCountry)
-        } else {
+        if(options.activity !== ''){
+            filteredByName = activities.filter(act => act.name.toLowerCase().includes(options.activity.toLowerCase()))
+            filtered= filteredByName
+        }
+        
+        // if (options.country === 'All') {
+        //     filtered= activities
+        //     // filteredByCountry = activities
+        //     // setActualPage(filteredByCountry)
+        // }
+         if(options.country !== 'All') {
             for (let i = 0; i < activities.length; i++) {
                 let pais = activities[i].countries;
                 for (let j = 0; j < pais.length; j++) {
@@ -54,19 +62,22 @@ export default function Activities() {
                     }
                 }
             }
-            setActualPage(filteredByCountry)
+            filtered = filteredByCountry
+            // setActualPage(filteredByCountry)
         }
         if (options.season !== 'All') {
-            filteredBySeason = actualPage.filter(act => act.season === options.season)
-            setActualPage(filteredBySeason)
+            filteredBySeason = activities.filter(act => act.season === options.season)
+            filtered = filteredBySeason
+            // setActualPage(filteredBySeason)
         }
         if (options.difficulty !== 'All') {
             // let actDifficulty = actualPage.map(act=> typeof act.difficulty === options.difficulty)
-            filteredByDifficulty = actualPage.filter(act => act.difficulty === options.difficulty)
-            setActualPage(filteredByDifficulty)
+            filteredByDifficulty = activities.filter(act => act.difficulty === options.difficulty)
+            filtered = filteredByDifficulty
+            // setActualPage(filteredByDifficulty)
         }
-
-    }, [options.season, options.difficulty, options.country, options.activity, actualPage, activities])
+        setActualPage(filtered)
+    }, [options.season, options.difficulty, options.country, options.activity, activities])
 
     const handleSelect = (e) => {
         console.log(e.target.name)
@@ -77,7 +88,10 @@ export default function Activities() {
         }))
 
     }
- 
+    // const handleSearch = (e) => {
+    //     console.log('SEACH')
+    // }
+
     return (
         <div>
             <NavBar />

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 // import Select from 'react-select'
 import NavBar from '../Nav/NavBar';
 import Country from '../Country/Country';
-import './Home.css'
+import home from './Home.module.css'
 
 
 
@@ -26,8 +26,8 @@ export default function Home() {
         sort: "ASC",
         population: '',
     });
-    
-    
+
+
     useEffect(() => {
         let filteredByName = countries.filter(country => country.name.toLowerCase().includes(options.name.toLowerCase()))
         let filteredByRegion = countries.filter(country => country.region.toLowerCase().includes(options.region.toLowerCase()))
@@ -56,7 +56,7 @@ export default function Home() {
         setFilteredList(filtered)
         setActualPage(filtered.slice(paginate, paginate + 9))  // los paises ya filtrados y paginados
 
-    }, [options.region, options.name, options.sort, options.population, paginate, countries, filteredList.length,sortFunc])
+    }, [options.region, options.name, options.sort, options.population, paginate, countries, filteredList.length, sortFunc])
 
     const onSearchChange = (e) => {
         setPaginate(0)
@@ -78,7 +78,7 @@ export default function Home() {
 
     const onSelectChange = (e) => {
         setPaginate(0)
-        if(e.target.name === 'region'){
+        if (e.target.name === 'region') {
             document.getElementById("population").value = e.target.value
         }
         if (e.target.name === 'sort') {
@@ -126,21 +126,18 @@ export default function Home() {
     return (
         <div >
             <NavBar />
-
             <div>
-
                 <input
                     type='text'
-                    className='input-text'
+                    className={home.inputText}
                     placeholder='Search Country'
                     name="name"
                     value={options.name}
                     onChange={onSearchChange}
                 />
 
-
                 {!options.name ?
-                    <div className='selectHome'>
+                    <div className={home.selectHome}>
 
                         {/*  SELECT TRADICIONAL    */}
 
@@ -185,7 +182,7 @@ export default function Home() {
                         /> */}
 
                         <label htmlFor="population">Order by Population </label>
-                        <select name="population"  value={options.population} id="population" onChange={onSelectChange} >
+                        <select name="population" value={options.population} id="population" onChange={onSelectChange} >
                             <option value=""></option>
                             <option value="ASC">ASC</option>
                             <option value="DES">DES</option>
@@ -198,9 +195,11 @@ export default function Home() {
                             defaultValue={optPopulat[0]}
                             options={optPopulat}
                         /> */}
-
-                        {options.region ? <h4> Filtering by: {options.region}</h4> : null}
-                        {options.sort ? <h4> Ordering By Name: {options.sort}</h4> : null}
+                        <div className={home.filtrerOrder}>
+                            {options.region ? <h4 className={home.filtering}> Filtering by: {options.region}</h4> : null}
+                            {options.sort ? <h4 className={home.filtering}> Ordering By Name: {options.sort}</h4> : null}
+                        {options.population ? <h4 className={home.filtering}> Ordering By Population: {options.population}</h4> : null}
+                        </div>
                     </div>
                     :
                     <h2>Search Result</h2>
@@ -209,8 +208,7 @@ export default function Home() {
             </div>
 
 
-            {options.population ? <h4> Ordering By Population: {options.population}</h4> : null}
-            <div className='countries-ctn' >
+            <div className={home.countriesCtn}>
                 {actualPage && actualPage.map(element => { //RENDERIZAR SOLO 9 PAISES YA FILTRADOS Y ORDENADOS
                     return (
                         <div key={element.name} className='countries-ctn' >
@@ -222,9 +220,9 @@ export default function Home() {
                 })
                 }
             </div>
-            <div className='buttons '>
-                <button onClick={prevPage} className='btn'> Previous</button>
-                <button onClick={nextPage} className='btn'> Next</button>
+            <div className={home.buttons}>
+                <button onClick={prevPage} className={home.btn}> Previous</button>
+                <button onClick={nextPage} className={home.btn}> Next</button>
             </div>
         </div>
 

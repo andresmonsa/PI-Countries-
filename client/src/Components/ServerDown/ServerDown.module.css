@@ -1,22 +1,20 @@
-
+/* 
 .msg {
     color: red;
  font-size: 50px;
  position: absolute
  
-}
-
-/* .serverDown {
-    
 } */
+
 .err {
     width: 100%;
-    height: 90%;
+    height: 80%;
     z-index: -1;
 }
 
 .msg {
     /* size: 100px; */
+    position: absolute;
     font-size: 50px;
     color: black;
     background-color: crimson;
