@@ -1,25 +1,28 @@
 let initialState = {
     countries: [],
-    country: []
+    country: [],
+    options :   {
+        name: "",
+        activity: "",
+        region: "All",
+        sort: "ASC",
+        population: '',
+    },
 }
 
 
 
-function rootReducer(state = initialState, action) {  //destructuring de action para usar solo type y 
+function rootReducer(state = initialState, action) {  
     switch (action.type) {
         case 'GET_COUNTRIES':
-            // console.log('reducer')
-            // console.log(state)
-            // console.log(action.payload)
             return {
                 ...state,
                 countries: action.payload
             }
-        case "GET_BY_NAME":
+        case "SET_OPTIONS":
             return {
                 ...state,
-                countries: action.payload
-                //country: action.payload
+                options: action.payload
             }
         case 'GET_COUNTRY_ID':
             return {

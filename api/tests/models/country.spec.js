@@ -1,22 +1,28 @@
-const { Country, conn } = require('../../src/db.js');
+const { Activity, Country, conn } = require('../../src/db.js');
 const { expect } = require('chai');
 
-describe('Country model', () => {
+describe('Activity model', () => {
   before(() => conn.authenticate()
     .catch((err) => {
       console.error('Unable to connect to the database:', err);
     }));
-  describe('Validators', () => {
-    beforeEach(() => Country.sync({ force: true }));
-    describe('name', () => {
-      it('should throw an error if name is null', (done) => {
-        Country.create({})
-          .then(() => done(new Error('It requires a valid name')))
+  describe('Validaciones', () => {
+    beforeEach(() => Activity.sync({ force: false }));
+    describe('Model', () => {
+      it('Must include a valid difficulty', (done) => {
+        Activity.create({ id: '666', name: "dance", difficulty: "6", duration: 2, season: "Winter" })
+          .then(() => done(new Error('Must include a valid difficulty')))
           .catch(() => done());
       });
-      it('should work when its a valid name', () => {
-        Country.create({ name: 'Argentina' });
+      it('error sin name', function (done) {
+        Activity.create({
+          duration: 'Hola',
+        })
+          .then(() => done('No debería haberse creado'))
+          .catch(() => done());
       });
     });
   });
+
+
 });

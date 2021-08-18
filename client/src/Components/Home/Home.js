@@ -1,32 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-// import Select from 'react-select'
+import { useSelector, useDispatch } from 'react-redux'
+import { setearOptions } from '../../Actions/';
 import NavBar from '../Nav/NavBar';
 import Country from '../Country/Country';
 import home from './Home.module.css'
-
-
-
-
-// CORREGIR DESP BUSCAR POR NOMBRE, QUE VUELVA A FILTRAR CORRECTAMENTE
+    ;
 
 export default function Home() {
+
+    const dispatch = useDispatch()
+    const dispachar = async (dispatch, obj) => {
+        await dispatch(setearOptions(obj))
+    }
 
     const sortFunc = require('./Filter')
     let countries = useSelector(state => state.countries)
     const [filteredList, setFilteredList] = useState(countries)
     const [paginate, setPaginate] = useState(0)
     const [actualPage, setActualPage] = useState()
-    // const [errors, setErrors] = useState({})
-    const [options, setOptions] = useState({
-        name: "",
-        activity: "",
-        region: "All",
-        sort: "ASC",
-        population: '',
-    });
-
+    let optiones = useSelector(state => state.options)
+    const  [options, setOptions]= useState(optiones)
 
     useEffect(() => {
         let filteredByName = countries.filter(country => country.name.toLowerCase().includes(options.name.toLowerCase()))
@@ -55,11 +49,14 @@ export default function Home() {
 
         setFilteredList(filtered)
         setActualPage(filtered.slice(paginate, paginate + 9))  // los paises ya filtrados y paginados
+        dispachar(dispatch, options)
 
-    }, [options.region, options.name, options.sort, options.population, paginate, countries, filteredList.length, sortFunc])
+    }, [options.region, options.name, options.sort, options.population, paginate, countries, filteredList.length, sortFunc, options, dispatch])
 
     const onSearchChange = (e) => {
         setPaginate(0)
+
+
 
         // if (e.target.value === '') {
         //     setOptions(prev => ({
@@ -74,9 +71,11 @@ export default function Home() {
             // sort: 'ASC',
             [e.target.name]: e.target.value
         }))
+
     }
 
     const onSelectChange = (e) => {
+
         setPaginate(0)
         if (e.target.name === 'region') {
             document.getElementById("population").value = e.target.value
@@ -89,30 +88,12 @@ export default function Home() {
             options.sort = ''
             document.getElementById("sort").value = "";
         }
-        console.log(e.target.value)
+        // console.log(e.target.value)
         setOptions(prev => ({
             ...prev, [e.target.name]: e.target.value
         }))
+
     }
-
-    // const optAlpha = [
-    //     { value: 'ASC', label: 'ASC', target: 'sort' },
-    //     { value: 'DES', label: 'DES', target: 'sort' }
-    // ]
-    // const optPopulat = [
-    //     { value: 'ASC', label: 'ASC', target: 'population' },
-    //     { value: 'DES', label: 'DES', target: 'population' }
-    // ]
-
-    // const optRegion = [
-    //     { value: 'All', label: 'All', target: 'region' },
-    //     { value: 'Asia', label: 'Asia', target: 'region' },
-    //     { value: 'Europe', label: 'Europe', target: 'region' },
-    //     { value: 'Africa', label: 'Africa', target: 'region' },
-    //     { value: 'Oceania', label: 'Oceania', target: 'region' },
-    //     { value: 'Americas', label: 'Americas', target: 'region' },
-    //     { value: 'Polar', label: 'Polar', target: 'region' }
-    // ]
 
     const nextPage = () => {
         if (filteredList.length > paginate + 9)
@@ -139,8 +120,6 @@ export default function Home() {
                 {!options.name ?
                     <div className={home.selectHome}>
 
-                        {/*  SELECT TRADICIONAL    */}
-
                         <label htmlFor="region">Choose a region:</label>
                         <select name="region" value={options.region} id="region" onChange={onSelectChange} >
                             <option value="All">All</option>
@@ -152,34 +131,12 @@ export default function Home() {
                             <option value="Polar">Polar</option>
                         </select>
 
-                        {/*                             REACT-SELECT
-                        <span>Filter by Continent</span>
-                        <Select className='selectRegion'
-                            placeholder='Continent...'
-                            onChange={onSelectChange}
-                            defaultValue={optRegion[0]}
-                            options={optRegion}
-                        /> */}
-
-
-                        {/* SELECT TRADICIONAL */}
-
                         <label htmlFor="sort">Order by Name </label>
                         <select name="sort" id="sort" value={options.sort} onChange={onSelectChange} >
                             <option value=""></option>
                             <option value="ASC">ASC</option>
                             <option value="DES">DES</option>
                         </select>
-
-
-
-                        {/* REACT-SELECT */}
-                        {/* <span>Order By Name</span>
-                        <Select className='selectOrder'
-                            onChange={onSelectChange}
-                            defaultValue={optAlpha[0]}
-                            options={optAlpha}
-                        /> */}
 
                         <label htmlFor="population">Order by Population </label>
                         <select name="population" value={options.population} id="population" onChange={onSelectChange} >
@@ -188,17 +145,10 @@ export default function Home() {
                             <option value="DES">DES</option>
                         </select>
 
-                        {/* REACT-SELECT */}
-                        {/* <span>Order by Population Size</span>
-                        <Select className='selectPopulation'
-                            onChange={onSelectChange}
-                            defaultValue={optPopulat[0]}
-                            options={optPopulat}
-                        /> */}
                         <div className={home.filtrerOrder}>
                             {options.region ? <h4 className={home.filtering}> Filtering by: {options.region}</h4> : null}
                             {options.sort ? <h4 className={home.filtering}> Ordering By Name: {options.sort}</h4> : null}
-                        {options.population ? <h4 className={home.filtering}> Ordering By Population: {options.population}</h4> : null}
+                            {options.population ? <h4 className={home.filtering}> Ordering By Population: {options.population}</h4> : null}
                         </div>
                     </div>
                     :
@@ -209,7 +159,7 @@ export default function Home() {
 
 
             <div className={home.countriesCtn}>
-                {actualPage && actualPage.map(element => { //RENDERIZAR SOLO 9 PAISES YA FILTRADOS Y ORDENADOS
+                {actualPage && actualPage.map(element => {
                     return (
                         <div key={element.name} className='countries-ctn' >
                             <NavLink to={`/country/${element.code}`}>

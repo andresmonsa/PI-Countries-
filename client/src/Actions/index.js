@@ -11,3 +11,11 @@ export  function getCountryID(id) {
         payload: id
     }
 }
+
+export  function setearOptions(obj) {
+    return {
+        type: 'SET_OPTIONS',
+        payload: obj
+    }
+}
+
