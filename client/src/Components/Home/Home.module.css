@@ -30,6 +30,7 @@
 	padding:10px 32px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
+    width: 120px;
 
 }
 
@@ -45,4 +46,18 @@
  padding: 5px 12px 5px 12px;
  border: 1px solid hsla(244, 72%, 25%, 0.75);
  border-radius: 3px;
+}
+
+.btnDisabled{
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #e7e7e7 5%, #a8a7a7 100%);
+	border-radius:3px;
+	border:1px solid #dcdcdc;
+	color:#a7a5a5;
+	font-size:15px;
+    width: 120px;
+	padding:10px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+
 }

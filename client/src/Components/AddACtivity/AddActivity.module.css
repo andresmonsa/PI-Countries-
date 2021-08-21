@@ -54,8 +54,21 @@ select, input{
 	padding:10px 32px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
-    margin-bottom: 15px;
-    
+    margin-bottom: 15px;   
+}
+.buttonCreateDisabled{
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:linear-gradient(to bottom, #cacaca 5%, #adadad 100%);
+	background-color:#ededed;
+	border-radius:6px;
+	border:1px solid #351919;
+	color:#777777;
+	font-size:15px;
+	font-weight:bold;
+	padding:10px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #888585;
+    margin-bottom: 15px;  
 }
 
 .button-Create:hover {

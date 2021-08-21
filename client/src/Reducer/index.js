@@ -10,24 +10,22 @@ let initialState = {
     },
 }
 
-
-
-function rootReducer(state = initialState, action) {  
-    switch (action.type) {
+function rootReducer(state = initialState, {type, payload}) {  
+    switch (type) {
         case 'GET_COUNTRIES':
             return {
                 ...state,
-                countries: action.payload
+                countries: payload
             }
         case "SET_OPTIONS":
             return {
                 ...state,
-                options: action.payload
+                options: payload
             }
         case 'GET_COUNTRY_ID':
             return {
                 ...state,
-                country: action.payload
+                country: payload
             }
         default: return state
     }

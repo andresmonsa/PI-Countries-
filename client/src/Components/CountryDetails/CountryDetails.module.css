@@ -8,13 +8,22 @@
 }
 
 .span{
-    font-weight: bold;
+    
     padding: 10px;
+    
 
+}
+li{
+    color: white;
+    font-weight: bold;
+    
 }
 ul {
     list-style:none;
     display: flex;
+    color: white;
+    font-weight: bold;
+    
 }
 
 .activities {
@@ -23,7 +32,9 @@ ul {
     margin: 20px;
     width: 33%;
     border: 1px solid black;
-    background-color: #767CA5
+    background-color: hsla(244, 100%, 17%, 0.596);
+    border-radius: 5px;
+    
     
 
 }
@@ -34,3 +45,4 @@ ul {
     justify-content: center ;
     
 }
+ 

@@ -33,7 +33,7 @@ const About = () => {
                 <div className="About-Me">
                     <h2 className="About-Text">My social networks and where to contact me.</h2>
                     <a href="https://www.linkedin.com/in/andr%C3%A9s-monsalbe-65130ab7/" target="_blank" rel="noreferrer"> <img className={about.links} alt="LinkedinImg" src={Linkedin}></img> </a>
-                    <a href="https://www.google.com/" target="_blank" rel="noreferrer"> <img className={about.links} alt="GmailImg" src={Gmail}></img> </a>
+                    <a  href="mailto:monsalbefotografia@gmail.com.com" target="_blank" rel="noreferrer"> <img className={about.links} alt="GmailImg" src={Gmail}></img> </a>
                     <a href="https://github.com/andresmonsa/" target="_blank" rel="noreferrer"> <img className={about.links} alt="Github" src={Github}></img> </a>
                 </div>
             </div>

@@ -13,7 +13,6 @@ const sortFunc = (arr, dir, key) => {
         });
         return arr
 
-
     } else if (dir === 'DES') {
         arr.sort(function (a, b) {
             if (a[key] < b[key]) {
@@ -26,9 +25,6 @@ const sortFunc = (arr, dir, key) => {
             return 0;
         });
         return arr
-
     }
-    
-
 }
 module.exports = sortFunc

@@ -25,8 +25,6 @@ export default function CountryDetails(props) {
         }
     }, [dispatch, code])
 
-    console.log(country)
-
     if (country.length !== 0) {
         return (
             <div >
@@ -47,7 +45,6 @@ export default function CountryDetails(props) {
                             {country[0].activities.length > 0 ? <h1>Activities</h1> : null}
                             <div className={cardDet.activitiesCard}>
                                 {country[0].activities.map((el, i) => {
-                                    console.log(el)
                                     return (
 
                                         <ul key={el.name} className={cardDet.activities}> Activity:  {i + 1}

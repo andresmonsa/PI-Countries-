@@ -30,7 +30,7 @@ function App() {
         setErr(false)
         console.log('Datos cargados correctamente')
         setTimeout(() => setLoading(false), 2000)
-
+       
       }
       catch (e) {
         setErr(true)
@@ -50,7 +50,7 @@ function App() {
           :
           < div >
             <Switch>
-              < Route exact path='/' component={Landing} />
+              <Route exact path='/' component={Landing} />
               <Route exact path='/about' component={About} />
               <Route exact path='/home' component={Home} />
               <Route exact path="/country/:id"><CountryDetails /></Route>
