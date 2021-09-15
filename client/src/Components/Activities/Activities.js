@@ -18,6 +18,7 @@ export default function Activities () {
       window.alert('No se puede acceder a la base de datos')
     }
   }, [])
+
   const opt = {
     activity: '',
     country: 'All',

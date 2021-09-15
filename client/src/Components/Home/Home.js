@@ -45,7 +45,7 @@ export default function Home () {
 
     setFilteredList(filtered)
     setActualPage(filtered.slice(paginate, paginate + 9))
-    dispatch(setearOptions(options))
+    // dispatch(setearOptions(options))
   }, [options.region, options.name, options.sort, options.population, paginate, countries, filteredList.length, sortFunc, options, dispatch])
 
   const onSearchChange = (e) => {

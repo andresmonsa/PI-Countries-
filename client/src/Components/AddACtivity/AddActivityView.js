@@ -60,8 +60,8 @@ const AddActivityView = ({ errors, countries, handlerOnChange, handlerOnChangeCo
       </div>
       <div className={addACt.errors} />
       {errors.country && InputActivity.changed ? <span className={addACt.err}> -{errors.country}- </span> : null}
-      {errors.name ? <span className={addACt.err}> -{errors.name}- </span> : null}
-      {errors.duration ? <span className={addACt.err}>-{errors.duration}-</span> : null}
+      {errors.name && <span className={addACt.err}> -{errors.name}- </span>}
+      {errors.duration && <span className={addACt.err}>-{errors.duration}-</span>}
       {errors.season ? <span className={addACt.err}>-{errors.season}-</span> : null}
       {errors.difficulty ? <span className={addACt.err}> {errors.difficulty} </span> : null}
     </div>

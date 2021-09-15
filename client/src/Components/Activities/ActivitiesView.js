@@ -47,7 +47,14 @@ export default function ActivitiesView ({ options, handleSelect, countries, actu
         {actualPage !== 'undefined' && actualPage.length === 0
           ? <h2 className={acts.non}>Not Activities Created Yet</h2>
           : actualPage.map((el, i) => (
-            <Activity key={el.name + i} name={el.name} duration={el.duration} season={el.season} countries={el.countries} difficulty={el.difficulty} />
+            <Activity
+              key={el.name + i}
+              name={el.name}
+              duration={el.duration}
+              season={el.season}
+              countries={el.countries}
+              difficulty={el.difficulty}
+            />
           ))}
 
       </div>
