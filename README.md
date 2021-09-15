@@ -3,7 +3,7 @@
 #  Countries App
 
 <p align="center">
-  <img height="800" src="./client/src/HomeBack.jpg" />
+  <img height="600" src="./client/src/HomeBack.jpg" />
 </p>
 
 ## Intro
